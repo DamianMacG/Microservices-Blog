@@ -1,6 +1,16 @@
 import React from "react";
-import { ReactDOM } from "react-dom";
-import App from "./App";
+import PostCreate from "./PostCreate";
+import PostList from "./PostList";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+const App = () => {
+  return (
+    <div className="container">
+      <h1>Create Post</h1>
+      <PostCreate />
+      <hr />
+      <h1>Posts</h1>
+      <PostList />
+    </div>
+  );
+};
+export default App;
