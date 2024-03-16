@@ -3,30 +3,49 @@ import axios from "axios";
 
 const PostCreate = () => {
   const [title, setTitle] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false); // New state variable
 
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    await axios.post("http://localhost:4000/posts", {
-      title,
-    });
+    if (!title.trim()) {
+      setErrorMessage("Title is required");
+      return;
+    }
 
-    setTitle("");
+    try {
+      await axios.post("http://localhost:4000/posts", {
+        title,
+      });
+
+      setTitle("");
+      setErrorMessage("");
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Error submitting post:", error);
+    }
   };
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <div className="form-group">
-          <label>Title</label>
-          <input
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="form-control"
-          />
-        </div>
-        <button className="btn btn-primary">Submit</button>
-      </form>
+      {submitted ? (
+        <div>Post submitted successfully!</div>
+      ) : (
+        <form onSubmit={onSubmit}>
+          <div className="form-group">
+            <label>Title</label>
+            <input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="form-control"
+              required
+            />
+            {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
+          </div>
+          <button className="btn btn-primary">Submit</button>
+        </form>
+      )}
     </div>
   );
 };
