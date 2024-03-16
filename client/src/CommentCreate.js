@@ -23,6 +23,7 @@ const CommentCreate = ({ postId }) => {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             className="form-control"
+            required
           />
         </div>
         <button className="btn btn-primary">Submit</button>
