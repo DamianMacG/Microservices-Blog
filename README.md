@@ -6,6 +6,7 @@ Microblog is a simple blog-style application built using microservices architect
 
 - **Post Articles**: Users can create and publish articles on various topics.
 - **Leave Comments**: Readers can engage with articles by leaving comments.
+- **Comment Moderation**: Comments are sent to a moderation service where they are approved or rejected.
 - **Microservices Architecture**: The application is built using microservices, enabling asynchronous communication for modularity and scalability.
 - **Node.js Backend**: Utilises Node.js for the backend server implementation.
 - **React Frontend**: The frontend is developed using React for a dynamic and interactive user experience.
