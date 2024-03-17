@@ -18,6 +18,7 @@ app.get("/posts/:id/comments", (req, res) => {
 app.post("/posts/:id/comments", async (req, res) => {
   const commentId = randomBytes(4).toString("hex");
   const { content } = req.body;
+
   const comments = commentsByPostId[req.params.id] || [];
 
   comments.push({
@@ -44,7 +45,7 @@ app.post("/posts/:id/comments", async (req, res) => {
 app.post("/events", async (req, res) => {
   console.log("Received event", req.body.type);
   const { type, data } = req.body;
-  if (type === "CommentCreated") {
+  if (type === "CommentModerated") {
     const { postId, id, status, content } = data;
     const comments = commentsByPostId[postId];
 
