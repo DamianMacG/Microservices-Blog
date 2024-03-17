@@ -1,6 +1,6 @@
 # Microblog
 
-Microblog is a simple blog-style application built using microservices architecture, focusing on asynchronous communication between services. It allows users to post articles and leave comments.
+Microblog is a simple blog-style application built using microservices architecture, focusing on asynchronous communication between services. It allows users to post articles and leave comments that are moderated for approval.
 
 ## Features
 
