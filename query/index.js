@@ -10,21 +10,24 @@ app.use(cors());
 
 const posts = {};
 
-app.get("/posts", (req, res) => {});
+app.get("/posts", (req, res) => {
+  res.send(posts);
+});
 
 app.post("/events", (req, res) => {
   const { type, data } = req.body;
 
   if (type === "PostCreated") {
-    const {id, title} = data
-    post[id] = { id, title, comments: [] };
+    const { id, title } = data;
+    posts[id] = { id, title, comments: [] };
   }
   if (type === "CommentCreated") {
     const { id, content, postId } = data;
     const post = posts[postId];
     post.comments.push({ id, content });
   }
-  res.send({})
+  console.log(posts);
+  res.send({});
 });
 
 app.listen(4002, () => {
